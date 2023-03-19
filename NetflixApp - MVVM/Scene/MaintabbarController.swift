@@ -14,7 +14,6 @@ class MainTabbarController: UITabBarController {
         view.backgroundColor = .systemBackground
         createTabbar()
 
-        viewModel.load()
         
     }
     

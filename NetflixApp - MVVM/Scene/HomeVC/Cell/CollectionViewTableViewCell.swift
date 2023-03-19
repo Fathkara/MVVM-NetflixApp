@@ -10,12 +10,13 @@ import UIKit
 class CollectionViewTableViewCell: UITableViewCell {
     static let identifier = "CollectionTableViewCell"
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
-    var viewModel: MovieListViewModelProtocol!
-    var arrMovie : [Movie] = []
+    var viewModel: MovieListViewModelProtocol?
+    var arrMovie = [Movie]()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         createCollectionView()
+
     }
     
     required init?(coder: NSCoder) {
@@ -37,23 +38,15 @@ class CollectionViewTableViewCell: UITableViewCell {
             make.bottom.equalTo(contentView.snp.bottom)
         }
     }
-
-}
-extension CollectionViewTableViewCell: MovieListViewModelDelegate {
-    func handleOutput(_ outPut: MovieListViewModelOutput) {
-        switch outPut {
-        case.showMovie(let movie):
-            self.arrMovie = movie
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        case.error(let error):
-            print(error)
+    public func configure(with Movies: [Movie]) {
+        self.arrMovie = Movies
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
         }
     }
-    
-    
+
 }
+
 extension CollectionViewTableViewCell: UICollectionViewDataSource,UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrMovie.count

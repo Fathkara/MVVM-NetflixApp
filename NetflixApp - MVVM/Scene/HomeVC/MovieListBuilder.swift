@@ -7,10 +7,10 @@
 
 import Foundation
 class MovieListBuilder {
-    static func make() -> MainTabbarController {
-        let vc = MainTabbarController()
+    static func make() -> HomeViewController {
+        let vc = HomeViewController()
         let viewModel = MovieListViewModel(service: MovieListService())
-        vc.viewModel = viewModel
+        vc.viewModel = viewModel 
         return vc
     }
 }

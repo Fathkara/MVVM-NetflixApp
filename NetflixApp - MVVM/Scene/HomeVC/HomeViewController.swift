@@ -8,13 +8,16 @@
 import UIKit
 import SnapKit
 class HomeViewController: UIViewController {
+    
     private var tableView = UITableView()
-
+    var viewModel: MovieListViewModel?
+    var arrMovie = [Movie]()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        
         setupUI()
+        viewModel?.delegate = self
+        viewModel?.load()
     }
     
     func setupUI() {
@@ -29,6 +32,21 @@ class HomeViewController: UIViewController {
         }
     }
 }
+extension HomeViewController: MovieListViewModelDelegate {
+    func handleOutput(_ outPut: MovieListViewModelOutput) {
+        switch outPut {
+        case.showMovie(let movie):
+            self.arrMovie = movie
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        case.error(let error):
+            print(error)
+        }
+    }
+    
+    
+}
 
 extension HomeViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,6 +54,7 @@ extension HomeViewController: UITableViewDelegate,UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier, for: indexPath) as! CollectionViewTableViewCell
+        cell.configure(with: arrMovie)
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

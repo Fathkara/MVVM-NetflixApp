@@ -17,6 +17,4 @@ enum MovieListViewModelOutput {
 protocol MovieListViewModelDelegate {
     func handleOutput(_ outPut: MovieListViewModelOutput)
 }
-protocol MainTabBarDelegate {
-    var delegate: MovieListViewModelDelegate? {get set}
-}
+
