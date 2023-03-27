@@ -21,6 +21,13 @@ final class MovieListViewModel: MovieListViewModelProtocol {
             self.delegate?.handleOutput(.error(error))
         })
     }
+    func loadTopMovie() {
+        service?.fetchTopMovies(onSuccess: { movie in
+            self.delegate?.handleOutput(.showMovie(movie))
+        }, omFailure: { error in
+            self.delegate?.handleOutput(.error(error))
+        })
+    }
     private func notify(_ outPut: MovieListViewModelOutput) {
         delegate?.handleOutput(outPut)
     }

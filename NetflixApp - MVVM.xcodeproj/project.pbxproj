@@ -28,6 +28,7 @@
 		3D417D5529C5D70000527F1A /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D417D5429C5D70000527F1A /* MovieListViewModel.swift */; };
 		3D417D5729C5D79700527F1A /* MovieListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D417D5629C5D79700527F1A /* MovieListBuilder.swift */; };
 		3D417D5A29C5F69100527F1A /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 3D417D5929C5F69100527F1A /* SDWebImage */; };
+		3D4C591D29C7270D007DD69E /* Sections + tableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4C591C29C7270D007DD69E /* Sections + tableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		3D417D5229C5D46500527F1A /* MovieConstracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieConstracts.swift; sourceTree = "<group>"; };
 		3D417D5429C5D70000527F1A /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
 		3D417D5629C5D79700527F1A /* MovieListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListBuilder.swift; sourceTree = "<group>"; };
+		3D4C591C29C7270D007DD69E /* Sections + tableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sections + tableView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 		3D360578298FF184003EED2F /* NetflixApp - MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				3D4C591B29C726F4007DD69E /* Constants */,
 				3D360592298FF1E0003EED2F /* Scene */,
 				3D360591298FF1D8003EED2F /* Extensions */,
 				3D360590298FF1D4003EED2F /* Model */,
@@ -206,6 +209,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		3D4C591B29C726F4007DD69E /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				3D4C591C29C7270D007DD69E /* Sections + tableView.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -285,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D417D5129C5CF0300527F1A /* NetworkConstants.swift in Sources */,
+				3D4C591D29C7270D007DD69E /* Sections + tableView.swift in Sources */,
 				3D417D4F29C5CEF100527F1A /* Network.swift in Sources */,
 				3D36059C298FF24B003EED2F /* SearchViewController.swift in Sources */,
 				3D36057E298FF184003EED2F /* MaintabbarController.swift in Sources */,

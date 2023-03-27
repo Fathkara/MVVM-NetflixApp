@@ -12,12 +12,14 @@ class HomeViewController: UIViewController {
     private var tableView = UITableView()
     var viewModel: MovieListViewModel?
     var arrMovie = [Movie]()
+    let sectionMovies: [String] = ["Trending Movies", "Trending Tv", "Popular", "Upcoming Movies", "Top rated"]
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupUI()
         viewModel?.delegate = self
         viewModel?.load()
+        viewModel?.loadTopMovie()
     }
     
     func setupUI() {
@@ -49,12 +51,24 @@ extension HomeViewController: MovieListViewModelDelegate {
 }
 
 extension HomeViewController: UITableViewDelegate,UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sectionMovies.count
     }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier, for: indexPath) as! CollectionViewTableViewCell
-        cell.configure(with: arrMovie)
+        switch indexPath.section {
+        case Sections.tableViewSection.Popular.rawValue:
+            cell.configure(with: arrMovie)
+        case Sections.tableViewSection.TrendingTv.rawValue:
+            cell.configure(with: arrMovie)
+        default:
+            break
+        }
+        
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

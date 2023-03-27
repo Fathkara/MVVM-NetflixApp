@@ -9,6 +9,7 @@ import Foundation
 protocol MovieListViewModelProtocol {
     var delegate:MovieListViewModelDelegate? {get set}
     func load()
+    func loadTopMovie()
 }
 enum MovieListViewModelOutput {
     case showMovie([Movie])
