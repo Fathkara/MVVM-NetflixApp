@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 final class MovieListViewModel: MovieListViewModelProtocol {
     var delegate: MovieListViewModelDelegate?
     var service: MovieListServiceProtocol?
@@ -31,8 +32,5 @@ final class MovieListViewModel: MovieListViewModelProtocol {
     private func notify(_ outPut: MovieListViewModelOutput) {
         delegate?.handleOutput(outPut)
     }
-        
-    
-    
 }
 

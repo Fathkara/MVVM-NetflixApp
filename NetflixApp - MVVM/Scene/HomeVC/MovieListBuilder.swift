@@ -6,8 +6,9 @@
 //
 
 import Foundation
+
 class MovieListBuilder {
-    static func make() -> HomeViewController {
+    static func make() ->  HomeViewController {
         let vc = HomeViewController()
         let viewModel = MovieListViewModel(service: MovieListService())
         vc.viewModel = viewModel 
